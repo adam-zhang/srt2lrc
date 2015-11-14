@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory> 
+#include <fstream>
 
 using namespace std;
 
@@ -26,6 +27,20 @@ std::vector<shared_ptr<Dialogue>> Analyzer::analyze(const string& fileName)
 vector<string> Analyzer::split(const string& fileName)
 {
 	vector<string> vec;
+	vector<string> text = getFileContent(fileName);
+	return vec;
+}
+
+vector<string> Analyzer::getFileContent(const string& fileName)
+{
+	vector<string> vec;
+	fstream stream(fileName);
+	vector<char> buffer(512);
+	while(!stream.eof())
+	{
+		stream.getline(&buffer[0], 512);
+		vec.push_back(&buffer[0]);
+	}
 	return vec;
 }
 

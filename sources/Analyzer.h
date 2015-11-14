@@ -26,5 +26,6 @@ public:
 private:
 	std::vector<std::string> split(const std::string& fileName);
 	std::shared_ptr<Dialogue> analyzeText(const std::string& text);
+	std::vector<std::string> getFileContent(const std::string& fileName);
 };
 #endif//__ANALYZER__H
