@@ -23,5 +23,8 @@ public:
 public:
 	std::vector<std::shared_ptr<Dialogue>> 
 		analyze(const std::string& fileName);
+private:
+	std::vector<std::string> split(const std::string& fileName);
+	std::shared_ptr<Dialogue> analyzeText(const std::string& text);
 };
 #endif//__ANALYZER__H
