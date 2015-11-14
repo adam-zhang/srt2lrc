@@ -28,5 +28,6 @@ private:
 	std::shared_ptr<Dialogue> analyzeText(const std::vector<std::string>& text);
 	std::vector<std::string> getFileContent(const std::string& fileName);
 	std::vector<std::vector<std::string>> mergeDialogue(const std::vector<std::string>&);
+	std::pair<std::string, std::string> getTime(const std::string& line);
 };
 #endif//__ANALYZER__H
