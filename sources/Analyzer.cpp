@@ -15,7 +15,7 @@ Analyzer::~Analyzer() {}
 std::vector<shared_ptr<Dialogue>> Analyzer::analyze(const string& fileName)
 {
 	vector<shared_ptr<Dialogue>> vec;
-	vector<string> strVec = split(fileName);
+	vector<vector<string>> strVec = split(fileName);
 	for(auto i = strVec.begin(); i != strVec.end(); ++i)
 	{
 		shared_ptr<Dialogue> dialogue = analyzeText(*i);
@@ -24,11 +24,28 @@ std::vector<shared_ptr<Dialogue>> Analyzer::analyze(const string& fileName)
 	return vec;
 }
 
-vector<string> Analyzer::split(const string& fileName)
+vector<vector<string>> Analyzer::split(const string& fileName)
 {
-	vector<string> vec;
 	vector<string> text = getFileContent(fileName);
-	return vec;
+	vector<vector<string>> dialogues = mergeDialogue(text);
+	return dialogues;
+}
+
+vector<vector<string>> Analyzer::mergeDialogue(const vector<string>& lines)
+{
+	vector<vector<string>> vecVec;
+	vector<string> vec;
+	for(auto i = lines.begin(); i != lines.end(); ++i)
+	{
+		if ((*i).empty())
+			vec.push_back(*i);
+		else
+		{
+			vecVec.push_back(vec);
+			vec.clear();
+		}
+	}
+	return vecVec;
 }
 
 vector<string> Analyzer::getFileContent(const string& fileName)
@@ -44,8 +61,9 @@ vector<string> Analyzer::getFileContent(const string& fileName)
 	return vec;
 }
 
-shared_ptr<Dialogue> Analyzer::analyzeText(const string& text)
+shared_ptr<Dialogue> Analyzer::analyzeText(const vector<string>& text)
 {
 	shared_ptr<Dialogue> dialogue(new Dialogue);
+	
 	return dialogue;
 }
