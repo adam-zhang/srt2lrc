@@ -2,6 +2,7 @@
 #define __DIALOGUE__H
 
 #include <string>
+#include <memory>
 
 class Dialogue
 {
@@ -55,4 +56,7 @@ public:
 		content_ = content;
 	}
 };
+
+//typedef std::shared_ptr<Dialogue> DialoguePtr
+
 #endif//__DIALOGUE__H
