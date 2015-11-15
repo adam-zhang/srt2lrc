@@ -10,18 +10,18 @@ public:
 	Dialogue();
 	~Dialogue();
 private:
-	long long serial_;
+	std::string serial_;
 	std::string beginningTime_;
 	std::string endingTime_;
 	std::string content_;
 
 public:
-	long long serial()
+	const std::string serial()const
 	{
 		return serial_;
 	}
 
-	void setSerial(long long serial)
+	void setSerial(const std::string& serial)
 	{
 		serial_ = serial;
 	}

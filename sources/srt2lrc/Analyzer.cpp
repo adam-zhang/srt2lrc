@@ -4,6 +4,8 @@
 #include <vector>
 #include <memory> 
 #include <fstream>
+#include <iostream>
+#include "string_algo.hpp"
 //#include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -38,14 +40,18 @@ vector<vector<string>> Analyzer::mergeDialogue(const vector<string>& lines)
 	vector<string> vec;
 	for(auto i = lines.begin(); i != lines.end(); ++i)
 	{
-		if ((*i).empty())
-			vec.push_back(*i);
-		else
+		if ((trim(*i)).empty())
 		{
 			vecVec.push_back(vec);
 			vec.clear();
 		}
+		else
+		{
+			vec.push_back(*i);
+		}
 	}
+	cout << "lines:" << lines.size() << endl;
+	cout << vecVec.size() << endl;
 	return vecVec;
 }
 
@@ -65,7 +71,7 @@ vector<string> Analyzer::getFileContent(const string& fileName)
 shared_ptr<Dialogue> Analyzer::analyzeText(const vector<string>& lines)
 {
 	shared_ptr<Dialogue> dialogue(new Dialogue);
-	dialogue->setSerial(atoll(lines[0].c_str()));
+	dialogue->setSerial(lines[0]);
 	std::pair<string, string> timePair = getTime(lines[1]);
 	dialogue->setBeginningTime(timePair.first);
 	dialogue->setEndingTime(timePair.second);

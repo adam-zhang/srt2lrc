@@ -14,4 +14,11 @@ int main(int argc, char** argv)
 	}
 	
 	std::vector<shared_ptr<Dialogue>> dialogues = Analyzer::instance().analyze(argv[1]);
+	for(auto i = dialogues.begin(); i != dialogues.end(); ++i)
+	{
+		cout << (*i)->serial() << endl << 
+			(*i)->beginningTime() << endl << 
+			(*i)->endingTime() << endl << 
+			(*i)->content() << endl << endl;
+	}
 }
