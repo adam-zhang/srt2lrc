@@ -18,11 +18,10 @@ Analyzer::~Analyzer() {}
 void Analyzer::analyze(const string& fileName)
 {
 	fstream file(fileName);
+	Dialogue dialogue;
 	while(!file.eof())
 	{
-		string line;
-		getline(file, line);
-		analyzeLine(line, fileName);
+
 	}
 }
 
