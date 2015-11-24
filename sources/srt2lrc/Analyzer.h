@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <vector>
+#include <string>
 
 class Dialogue;
 
@@ -17,17 +18,11 @@ public:
 	static Analyzer& instance()
 	{
 		if (!instance_)
-			instance_ = std::auto_ptr<Analyzer>(new Analyzer);
+			instance_ = std::unique_ptr<Analyzer>(new Analyzer);
 		return *instance_;
 	}
 public:
-	std::vector<std::shared_ptr<Dialogue>> 
-		analyze(const std::string& fileName);
-private:
-	std::vector<std::vector<std::string>> split(const std::string& fileName);
-	std::shared_ptr<Dialogue> analyzeText(const std::vector<std::string>& text);
-	std::vector<std::string> getFileContent(const std::string& fileName);
-	std::vector<std::vector<std::string>> mergeDialogue(const std::vector<std::string>&);
-	std::pair<std::string, std::string> getTime(const std::string& line);
+	void analyze(const std::string& fileName);
+	void analyzeLine(const std::string& line, const std::string& fileName);
 };
 #endif//__ANALYZER__H
