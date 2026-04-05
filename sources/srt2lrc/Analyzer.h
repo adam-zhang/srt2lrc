@@ -22,7 +22,7 @@ public:
 		return *instance_;
 	}
 public:
-	void analyze(const std::string& fileName);
-	void analyzeLine(const std::string& line, const std::string& fileName);
+	std::vector<std::unique_ptr<Dialogue>> analyze(const std::string& fileName);
 };
+
 #endif//__ANALYZER__H

@@ -5,8 +5,6 @@
 #include <memory> 
 #include <fstream>
 #include <iostream>
-#include "string_algo.hpp"
-//#include <boost/lexical_cast.hpp>
 
 using namespace std;
 
@@ -15,18 +13,28 @@ unique_ptr<Analyzer> Analyzer::instance_;
 Analyzer::Analyzer() {}
 Analyzer::~Analyzer() {}
 
-void Analyzer::analyze(const string& fileName)
+vector<string> getlines(fstream& file)
+{
+	vector<string> lines;
+	string line;
+	while(getline(file, line))
+		lines.emplace_back(line);
+	return lines;
+}
+
+vector<unique_ptr<Dialogue>> toDialogues(const vector<string>& lines)
+{
+	return vector<unique_ptr<Dialogue>>();
+}
+
+vector<unique_ptr<Dialogue>> Analyzer::analyze(const string& fileName)
 {
 	fstream file(fileName);
 	Dialogue dialogue;
-	while(!file.eof())
-	{
-
-	}
+	auto lines = getlines(file);
+	vector<unique_ptr<Dialogue>> dialogues = toDialogues(lines);
+	return dialogues;
 }
 
-void Analyzer::analyzeLine(const string& line, const string& fileName)
-{
-}
 
 

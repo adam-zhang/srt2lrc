@@ -11,7 +11,7 @@ set (src
 set (headers
 	Dialogue.h
 	Analyzer.h
-	string_algo.hpp
+	#string_algo.hpp
 	Path.h
 	)
 add_executable(srt2lrc ${src} ${headers})
