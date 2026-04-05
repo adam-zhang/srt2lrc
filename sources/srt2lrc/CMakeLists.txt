@@ -6,9 +6,11 @@ set (src
 	appMain.cpp
 	Dialogue.cpp
 	Analyzer.cpp
+	Lyric.cpp
 	#Path.cpp
 	)
 set (headers
+	Lyric.h
 	Dialogue.h
 	Analyzer.h
 	#string_algo.hpp
