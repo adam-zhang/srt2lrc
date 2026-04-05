@@ -6,12 +6,12 @@ set (src
 	appMain.cpp
 	Dialogue.cpp
 	Analyzer.cpp
-	Path.cpp
+	#Path.cpp
 	)
 set (headers
 	Dialogue.h
 	Analyzer.h
 	#string_algo.hpp
-	Path.h
+	#Path.h
 	)
 add_executable(srt2lrc ${src} ${headers})
