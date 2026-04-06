@@ -19,7 +19,15 @@ private:
 	std::chrono::system_clock time_;
 	std::string content_;
 public:
-	const std::chrono::system_clock time()
+	const std::string& content()
+	{
+		return content_;
+	}
+	void setContent(const std::string& content)
+	{
+		content_ = content;
+	}
+	const std::chrono::system_clock& time()
 	{ return time_;}
 	void setTime(const std::chrono::system_clock& time)
 	{ time_ = time;}
